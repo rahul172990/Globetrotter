@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { apiBaseUrl } from "../constants";
 
 const InviteeScore = ({ username }) => {
   const [invitee, setInvitee] = useState(null);
 
   useEffect(() => {
     const fetchInvitee = async () => {
-      const response = await fetch(`/api/user/${username}`);
+      const response = await fetch(`${apiBaseUrl}/api/user/${username}`);
       const data = await response.json();
       setInvitee(data);
     };

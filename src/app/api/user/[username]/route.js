@@ -1,9 +1,7 @@
 import { NextResponse } from "next/server";
 import { MongoClient } from "mongodb";
 
-const uri =
-  "mongodb+srv://rahulkumar888poi:R9H8fOoCM8RbwxlQ@globetrotter.jllui.mongodb.net/?retryWrites=true&w=majority&appName=globetrotter";
-const client = new MongoClient(uri);
+const client = new MongoClient(process.env.API_SECRET_KEY);
 
 export async function GET(req, { params }) {
   const { username } = params;

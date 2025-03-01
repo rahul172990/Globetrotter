@@ -6,7 +6,7 @@ import ScoreCard from "./ScoreCard";
 import Header from "./Header";
 import Confetti from "react-confetti";
 import { FaSadTear, FaSmile } from "react-icons/fa";
-import { citiesOption } from "../constants";
+import { apiBaseUrl, citiesOption } from "../constants";
 import { getRandomOptions } from "../helpers";
 
 const Game = () => {
@@ -21,7 +21,7 @@ const Game = () => {
 
   const fetchDestination = async () => {
     try {
-      const response = await fetch("/api/destination");
+      const response = await fetch(`${apiBaseUrl}/api/destination`);
       if (!response.ok) {
         throw new Error("Failed to fetch destination");
       }

@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { apiBaseUrl } from "../constants";
 
 const UsernameForm = ({ onRegister, score, setOpenRegister }) => {
   const [username, setUsername] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("/api/register", {
+    const response = await fetch(`${apiBaseUrl}/api/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, score }),
