@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { NextResponse } from "next/server";
 import { MongoClient } from "mongodb";
 import { db_Connect_Key } from "@/app/constants";
