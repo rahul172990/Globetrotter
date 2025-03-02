@@ -1,7 +1,18 @@
-# Globetrotter
+# 🌍 Globetrotter
 
-## Introduction
-Globetrotter is a project aimed at [briefly describe the purpose of your project]. This project is built using modern web technologies to ensure scalability, reliability, and performance.
+**Globetrotter** is a full-stack web app where users get cryptic clues about famous places and must guess the correct destination. Once they guess, they unlock fun facts, trivia, and surprises about the destination! It’s a fun and educational way to explore the world.
+
+---
+
+## 🚀 Features
+
+- **Cryptic Clues**: Get 1–2 random clues about a famous destination.
+- **Multiple Choice**: Guess the correct destination from a set of options.
+- **Instant Feedback**:
+  - � **Correct Answer**: Confetti animation + fun fact.
+  - 😢 **Incorrect Answer**: Sad-face animation + fun fact.
+- **Score Tracking**: Track your correct and incorrect answers.
+- **Play Again**: Load a new random destination and keep playing.
 
 ## Tech Stack
 
@@ -48,7 +59,6 @@ Make sure you have the following installed on your system:
 3. **Set up environment variables:**
    Create a `.env` file in the root directory and add the following:
    ```env
-   PORT=3000
    NEXT_PUBLIC_API_URL=http://localhost:3000
    NEXT_PUBLIC_API_SECRET_KEY=mongo_connection_string
    ```
