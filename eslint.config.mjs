@@ -30,8 +30,8 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
-      "no-unused-vars": "warn", // Treat unused variables as warnings
-      "no-console": "warn", // Warn about console.log statements
+      "no-unused-vars": "off",
+      "no-console": "off",
       "react/jsx-key": "error", // Enforce key prop in JSX
       "react/prop-types": "off", // Disable prop-types (if using TypeScript)
     },
