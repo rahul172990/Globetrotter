@@ -4,38 +4,28 @@ import { db_Connect_Key } from "@/app/constants";
 
 const client = new MongoClient(db_Connect_Key);
 
-// export async function POST(req) {
-//   const { username, score } = await req.json();
-
-//   try {
-//     await client.connect();
-//     const db = client.db("globetrotter");
-//     const users = db.collection("users");
-
-//     const existingUser = await users.findOne({ username });
-//     if (existingUser) {
-//       return NextResponse.json(
-//         { error: "Username already exists" },
-//         { status: 400 }
-//       );
-//     }
-
-//     await users.insertOne({ username, score });
-//     return NextResponse.json({ message: "User registered successfully" });
-//   } catch (error) {
-//     return NextResponse.json({ error: error }, { status: 500 });
-//   } finally {
-//     await client.close();
-//   }
-// }
-
 export async function POST(req) {
   console.log("Request received");
 
-  const { username, score } = await req.json();
-  console.log("Parsed request body:", { username, score });
-
   try {
+    const { username, score } = await req.json();
+    console.log("Parsed request body:", { username, score });
+
+    // Validate input
+    if (!username || typeof username !== "string") {
+      return NextResponse.json(
+        { error: "Username must be a valid string" },
+        { status: 400 }
+      );
+    }
+
+    if (typeof score !== "number") {
+      return NextResponse.json(
+        { error: "Score must be a valid number" },
+        { status: 400 }
+      );
+    }
+
     console.log("Connecting to MongoDB");
     await client.connect();
     const db = client.db("globetrotter");
