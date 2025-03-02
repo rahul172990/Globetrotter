@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { NextResponse } from "next/server";
 import { MongoClient } from "mongodb";
 import { db_Connect_Key } from "@/app/constants";
@@ -24,10 +23,7 @@ export async function POST(req) {
     await users.insertOne({ username, score });
     return NextResponse.json({ message: "User registered successfully" });
   } catch (error) {
-    return NextResponse.json(
-      { error: "Failed to register user" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error }, { status: 500 });
   } finally {
     await client.close();
   }
