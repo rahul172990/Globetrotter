@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { MongoClient } from "mongodb";
+import { db_Connect_Key } from "@/app/constants";
 
-const client = new MongoClient(process.env.NEXT_PUBLIC_API_SECRET_KEY);
+const client = new MongoClient(db_Connect_Key);
 
 export async function POST(req) {
   const { username, score } = await req.json();

@@ -94,6 +94,8 @@ const citiesOption = [
 ];
 
 const apiBaseUrl =
-  process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000/";
+  process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000";
 
-export { citiesOption, apiBaseUrl };
+const db_Connect_Key = process.env.NEXT_PUBLIC_API_SECRET_KEY;
+
+export { citiesOption, apiBaseUrl, db_Connect_Key };
