@@ -3,25 +3,13 @@ import { NextResponse } from "next/server";
 import { MongoClient } from "mongodb";
 import { db_Connect_Key } from "@/app/constants";
 
-let client: MongoClient;
-if (!global._mongoClientPromise) {
-  client = new MongoClient(db_Connect_Key);
-  global._mongoClientPromise = client.connect();
-}
-client = await global._mongoClientPromise;
+const client = new MongoClient(db_Connect_Key);
 
-export async function POST(req: Request) {
+export async function POST(req) {
+  const { username, score } = await req.json();
+
   try {
-    if (!req) {
-      return NextResponse.json({ error: "Invalid request" }, { status: 400 });
-    }
-
-    const body = await req.json();
-    if (!body || !body.username || !body.score) {
-      return NextResponse.json({ error: "Invalid input" }, { status: 400 });
-    }
-
-    const { username, score } = body;
+    await client.connect();
     const db = client.db("globetrotter");
     const users = db.collection("users");
 
@@ -36,10 +24,11 @@ export async function POST(req: Request) {
     await users.insertOne({ username, score });
     return NextResponse.json({ message: "User registered successfully" });
   } catch (error) {
-    console.error("Error in API route:", error);
     return NextResponse.json(
       { error: "Failed to register user" },
       { status: 500 }
     );
+  } finally {
+    await client.close();
   }
 }
